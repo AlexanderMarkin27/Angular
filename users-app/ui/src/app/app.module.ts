@@ -8,19 +8,23 @@ import { RegistrationPageComponent } from './pages/registration-page/registratio
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing-module';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { UsersListComponent } from './pages/users/users-list/users-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     HeaderComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

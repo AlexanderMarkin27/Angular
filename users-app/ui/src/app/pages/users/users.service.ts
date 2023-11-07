@@ -13,7 +13,7 @@ export class UsersService {
   ) {}
 
   getUsers() {
-    this.httpCliet.get('/assets/users.json')
+    return this.httpCliet.get('/assets/users.json')
       .pipe(
         map(data => {
           const array: User[] = [];
@@ -33,6 +33,6 @@ export class UsersService {
           return array;
         })
       )
-      .subscribe( response => this.users = response);
+      // .subscribe( response => this.users = response);
   }
 }
