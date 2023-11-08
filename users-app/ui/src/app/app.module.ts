@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing-module';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { UsersListComponent } from './pages/users/users-list/users-list.component';
+import { QualityComponent } from './utils/quality/qualty.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { UsersListComponent } from './pages/users/users-list/users-list.componen
     LoginPageComponent,
     HeaderComponent,
     RegistrationPageComponent,
-    UsersListComponent
+    UsersListComponent,
+    QualityComponent
   ],
   imports: [
     BrowserModule,
