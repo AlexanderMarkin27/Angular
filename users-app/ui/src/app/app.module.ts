@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { UsersListComponent } from './pages/users/users-list/users-list.component';
 import { QualityComponent } from './utils/quality/qualty.component';
+import { UserComponent } from './pages/users/user/user.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { QualityComponent } from './utils/quality/qualty.component';
     HeaderComponent,
     RegistrationPageComponent,
     UsersListComponent,
-    QualityComponent
+    QualityComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

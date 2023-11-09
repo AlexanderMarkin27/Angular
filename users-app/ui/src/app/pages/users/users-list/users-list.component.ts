@@ -49,6 +49,4 @@ export class UsersListComponent implements OnInit, OnDestroy{
     return this.qualitiesList.find(qual => qual.id === index);
   }
 
-
-
 }

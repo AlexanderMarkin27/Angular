@@ -30,9 +30,16 @@ export class UsersService {
             }
             array.push(user);
           }
+          this.users = array;
+          console.log(this.users)
           return array;
         })
-      )
-      // .subscribe( response => this.users = response);
+      );
+  }
+
+  getUser(index: string | null) {
+    // return this.httpCliet.get(`${index}`)
+    console.log(this.users);
+    return this.users.find(user => user.id === index);
   }
 }
