@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Profession } from 'src/app/models/profession.model';
 import { Quality } from 'src/app/models/quality.model';
@@ -20,25 +21,23 @@ export class UsersListComponent implements OnInit, OnDestroy{
   qualitiesList: Quality[] = [];
 
   usersSub = new Subscription;
-  professionsSub = new Subscription;
-  qualitiesSub = new Subscription;
+  dataSub = new Subscription;
 
   constructor(
-    private userService: UsersService,
-    private professionsService: ProfessionsService,
-    private qualitiesService: QualitiesService
+    private activatedRoute: ActivatedRoute
   ){}
 
 
   ngOnInit(): void {
-    this.usersSub = this.userService.getUsers().subscribe(users => this.usersList = users);
-    this.professionsSub = this.professionsService.getProfessions().subscribe(professions => this.professionsList = professions);
-    this.qualitiesSub = this.qualitiesService.getQualities().subscribe(qualities => this.qualitiesList = qualities)
+    this.dataSub = this.activatedRoute.data.subscribe(({0: qualities, 1: professions, 2: users}) => {
+      this.qualitiesList = qualities;
+      this.professionsList = professions;
+      this.usersList = users;
+    });
   }
 
   ngOnDestroy(): void {
     this.usersSub.unsubscribe();
-    this.professionsSub.unsubscribe();
   }
 
   onFindProfession(index: string) { 

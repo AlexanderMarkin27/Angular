@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Quality } from "../models/quality.model";
-import { map } from "rxjs";
+import { map, tap } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class QualitiesService {

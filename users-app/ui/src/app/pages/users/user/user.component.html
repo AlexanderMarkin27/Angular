@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-4">
-      <div class="card mb-3">
+      <div class="card mb-3 mt-3">
         <div class="card-body">
           <button type="button" class="position-absolute top-0 end-0 btn btn-light btn-sm">
             <i class="bi bi-gear"></i>
@@ -17,7 +17,7 @@
           </div>
           <div class="mt-3">
             <h4>{{user?.name}}</h4>
-            <p class="text-secondary mb-1">{{user?.profession}}</p>
+            <p class="text-secondary mb-1">{{onFindProfession(user?.profession)}}</p>
             <div class="text-muted">
                 <i
                     class="bi bi-caret-down-fill text-primary"
@@ -37,9 +37,10 @@
             <h5 class="card-title">
                 <span>Qualities</span>
             </h5>
-            <p class="card-text" *ngFor="let quality of user?.qualities">
+            <app-quality *ngFor="let quality of user?.qualities" [quality]="onFindQuality(quality)"></app-quality>
+            <!-- <p class="card-text" *ngFor="let quality of user?.qualities">
                 {{quality}}
-            </p>
+            </p> -->
         </div>
       </div>
       <div class="card mb-3">

@@ -6,20 +6,20 @@ import { map } from "rxjs";
 @Injectable({providedIn: 'root'})
 export class UsersService {
 
-  private users: User[] = [];
+  private url = 'https://users-app-base-default-rtdb.europe-west1.firebasedatabase.app/users';
 
   constructor(
     private httpCliet: HttpClient,
   ) {}
 
   getUsers() {
-    return this.httpCliet.get('/assets/users.json')
+    return this.httpCliet.get(`${this.url}.json`)
       .pipe(
         map(data => {
           const array: User[] = [];
           for (const item of Object.values(data)) {
             const user: User = {
-              id: item._id,
+              id: item.id,
               name: item.name,
               email: item.email,
               password: item.password,
@@ -30,16 +30,12 @@ export class UsersService {
             }
             array.push(user);
           }
-          this.users = array;
-          console.log(this.users)
           return array;
         })
       );
   }
 
   getUser(index: string | null) {
-    // return this.httpCliet.get(`${index}`)
-    console.log(this.users);
-    return this.users.find(user => user.id === index);
+    return this.httpCliet.get<User>(`${this.url}\\${index}.json`);
   }
 }
