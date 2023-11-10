@@ -4,6 +4,10 @@
       <h3 class="text-center">Registration</h3>
       <form>
         <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name">
+        </div>
+        <div class="mb-3">
           <label for="email" class="form-label">Email</label>
           <input type="email" class="form-control" id="email">
         </div>
@@ -11,11 +15,40 @@
           <label for="password" class="form-label">Password</label>
           <input type="password" class="form-control" id="password">
         </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <div class="mb-3">
+          <label for="meetings" class="form-label">Completed Meetings</label>
+          <input type="number" class="form-control" id="meetings">
+        </div>
+        <div class="mb-3">
+          <label for="profession">Profession</label>
+          <select name="profession" id="profession" class="form-select mt-2">
+            <option *ngFor="let prof of professionsList" [value]="prof.id">{{prof.name}}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="quality">Quality</label>
+          <select name="quality" id="quality" class="form-select mt-2" multiple>
+            <option *ngFor="let quality of qualitiesList" [value]="quality.id">{{quality.name}}</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="male" value="male">
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="female" value="female">
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+        </div>
+        <hr>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">Sign up</button>
+        </div>
       </form>
       
       <div class="mt-3 text-center">
-        <span>Don't have account? <a routerLink="registration">Sing up</a></span>
+        <span>Already have an account? <a routerLink="../login">Sing in</a></span>
       </div>
     </div>
   </div>
