@@ -2,48 +2,52 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <h3 class="text-center">Registration</h3>
-      <form>
+      <form #form="ngForm" (ngSubmit)="onSubmit(form)">
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name">
+          <input type="text" class="form-control" id="name" ngModel name="name" required>
         </div>
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email">
+          <input type="email" class="form-control" id="email" name="email" ngModel required email>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password">
+          <input type="password" class="form-control" id="password" name="password" ngModel required minlength="6">
         </div>
         <div class="mb-3">
           <label for="meetings" class="form-label">Completed Meetings</label>
-          <input type="number" class="form-control" id="meetings">
+          <input type="number" class="form-control" id="meetings" ngModel name="meetings" required>
         </div>
         <div class="mb-3">
           <label for="profession">Profession</label>
-          <select name="profession" id="profession" class="form-select mt-2">
+          <select name="profession" id="profession" class="form-select mt-2" ngModel name="profession" required>
             <option *ngFor="let prof of professionsList" [value]="prof.id">{{prof.name}}</option>
           </select>
         </div>
         <div class="mb-3">
           <label for="quality">Quality</label>
-          <select name="quality" id="quality" class="form-select mt-2" multiple>
+          <select name="quality" id="quality" class="form-select mt-2" multiple ngModel name="quality" required>
             <option *ngFor="let quality of qualitiesList" [value]="quality.id">{{quality.name}}</option>
           </select>
         </div>
         <div class="mb-4">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="male" value="male">
-            <label class="form-check-label" for="male">Male</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" value="male" id="flexCheckIndeterminateDisabled" ngModel name="gender" required>
+            <label class="form-check-label" for="flexCheckIndeterminateDisabled">
+              Male
+            </label>
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="female" value="female">
-            <label class="form-check-label" for="female">Female</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" value="femaile" id="flexCheckDisabled" ngModel name="gender" required>
+            <label class="form-check-label" for="flexCheckDisabled">
+              Female
+            </label>
           </div>
         </div>
         <hr>
         <div class="d-grid">
-          <button type="submit" class="btn btn-primary">Sign up</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Sign up</button>
         </div>
       </form>
       

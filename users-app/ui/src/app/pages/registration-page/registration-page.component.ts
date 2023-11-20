@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Profession } from 'src/app/models/profession.model';
@@ -11,6 +12,8 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./registration-page.component.css']
 })
 export class RegistrationPageComponent implements OnInit, OnDestroy{
+
+  
 
   professionsList: Profession[] = [];
   qualitiesList: Quality[] = [];
@@ -31,6 +34,11 @@ export class RegistrationPageComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
     this.dataSub.unsubscribe();
+  }
+
+  onSubmit(form: NgForm) {
+    console.log(form.value);
+    form.reset();
   }
 
 
